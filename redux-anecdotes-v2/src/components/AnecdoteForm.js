@@ -14,6 +14,7 @@ class AnecdoteForm extends React.Component {
     )
     e.target.anecdote.value = ''
     setTimeout(() => this.props.store.dispatch(actionForNotification.createNotification('')), 5000)
+    
   }
   render() {
     return (
