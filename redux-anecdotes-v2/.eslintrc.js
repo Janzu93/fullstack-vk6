@@ -5,6 +5,7 @@ module.exports = {
     "node": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -16,6 +17,7 @@ module.exports = {
     "react"
   ],
   "rules": {
+    "strict": 0,
     "indent": [
       "error",
       2
@@ -33,10 +35,13 @@ module.exports = {
       "never"
     ],
     "eqeqeq": "error",
-    "no-trailing-spaces": "error",
+    "no-trailing-spaces": "warn",
     "object-curly-spacing": [
       "error", "always"
     ],
-    "no-console": "warn"
+    "no-console": "warn",
+    "react/prop-types": 0,
+    "no-unused-vars": 0,
+    "no-self-assign": "error"
   }
 };
