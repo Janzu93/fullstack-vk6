@@ -13,8 +13,7 @@ const notificationReducer = (store = initialState, action) => {
 
   switch (action.type) {
     case 'NEW':
-      store = action.notification
-      return store
+      return action.notification
     default:
       return store
   }
