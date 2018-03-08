@@ -8,10 +8,16 @@ class App extends React.Component {
 
   render() {
     //  const anecdotes = this.props.store.getState().anecdote
+    let notification = ''
+
+    if (this.props.store.getState().notification) {
+      notification = <Notification store={this.props.store} />
+
+    }
     return (
       <div>
         <h1>Programming anecdotes</h1>
-        <Notification store={this.props.store} />
+        {notification}
         <FilterForm store={this.props.store} />
         <AnecdoteList store={this.props.store} />
         <AnecdoteForm store={this.props.store} />
