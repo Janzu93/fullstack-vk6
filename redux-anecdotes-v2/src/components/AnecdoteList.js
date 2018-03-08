@@ -20,7 +20,6 @@ class AnecdoteList extends React.Component {
                 <button onClick={() => {
                   this.props.store.dispatch(actionFor.anecdoteVoting(anecdote.id))
                   this.props.store.dispatch(actionForNotification.createNotification(`Voted '${anecdote.content}' up`))
-                  setTimeout(() => this.props.store.dispatch(actionForNotification.createNotification('')), 5000)
                 }
                 }>
                   vote

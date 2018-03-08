@@ -12,7 +12,6 @@ class App extends React.Component {
 
     if (this.props.store.getState().notification) {
       notification = <Notification store={this.props.store} />
-
     }
     return (
       <div>
