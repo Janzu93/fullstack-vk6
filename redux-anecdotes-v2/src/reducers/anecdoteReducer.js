@@ -1,8 +1,8 @@
 export const actionFor = {
-  anecdoteCreation(content) {
+  anecdoteCreation(data) {
     return {
       type: 'CREATE',
-      content
+      data
     }
   },
   anecdoteVoting(id) {
@@ -20,7 +20,7 @@ export const actionFor = {
 }
 
 const anecdoteReducer = (store = [], action) => {
-  
+
   if (action.type === 'VOTE') {
     const old = store.filter(a => a.id !== action.id)
     const voted = store.find(a => a.id === action.id)
@@ -28,7 +28,6 @@ const anecdoteReducer = (store = [], action) => {
     return [...old, { ...voted, votes: voted.votes + 1 }]
   }
   if (action.type === 'CREATE') {
-
     return [...store, action.data]
   }
   if (action.type === 'INIT_ANECDOTES') {
