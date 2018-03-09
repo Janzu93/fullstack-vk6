@@ -2,16 +2,16 @@ import React from 'react'
 import { actionFor } from '../reducers/anecdoteReducer'
 import { actionForNotification } from '../reducers/notificationReducer'
 import { connect } from 'react-redux'
+import anecdotesToShow from './anecdotesToShow'
 
 
 class AnecdoteList extends React.Component {
 
   render() {
-    const anecdotes = this.props.anecdote
     return (
       <div>
         <h2>Anecdotes</h2>
-        {anecdotes.sort((a, b) => b.votes - a.votes).filter(anecdote => anecdote.content.toLowerCase().includes(this.props.filter.toLowerCase())).map(anecdote =>
+        {this.props.anecdote.sort((a, b) => b.votes - a.votes).map(anecdote =>
           <div key={anecdote.id}>
             <div>
               {anecdote.content}
@@ -35,8 +35,7 @@ class AnecdoteList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    anecdote: state.anecdote,
-    filter: state.filter
+    anecdote: anecdotesToShow(state)
   }
 }
 
