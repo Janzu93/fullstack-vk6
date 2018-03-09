@@ -5,10 +5,11 @@ export const actionFor = {
       data
     }
   },
-  anecdoteVoting(id) {
+  anecdoteVoting(data) {
     return {
       type: 'VOTE',
-      id
+      id: data.id,
+      data
     }
   },
   anecdotesInit(data) {
@@ -22,10 +23,7 @@ export const actionFor = {
 const anecdoteReducer = (store = [], action) => {
 
   if (action.type === 'VOTE') {
-    const old = store.filter(a => a.id !== action.id)
-    const voted = store.find(a => a.id === action.id)
-
-    return [...old, { ...voted, votes: voted.votes + 1 }]
+    return store.filter(a => a.id !== action.id).concat(action.data)
   }
   if (action.type === 'CREATE') {
     return [...store, action.data]

@@ -22,7 +22,7 @@ class Notification extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-   notification: state.notification
+    notification: state.notification
   }
 }
 
