@@ -1,3 +1,5 @@
+import anecdoteService from '../services/anecdotes'
+
 export const actionFor = {
   anecdoteCreation(data) {
     return {
@@ -12,10 +14,13 @@ export const actionFor = {
       data
     }
   },
-  anecdotesInit(data) {
-    return {
-      type: 'INIT_ANECDOTES',
-      data
+  anecdotesInit() {
+    return async (dispatch) => {
+      const anecdotes = await anecdoteService.getAll()
+      dispatch({
+        type: 'INIT_ANECDOTES',
+        data: anecdotes
+      })
     }
   }
 }
