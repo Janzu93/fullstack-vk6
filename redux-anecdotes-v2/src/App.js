@@ -4,8 +4,14 @@ import AnecdoteForm from './components/AnecdoteForm'
 import AnecdoteList from './components/AnecdoteList'
 import FilterForm from './components/filterForm'
 import { connect } from 'react-redux'
+import { actionFor } from './reducers/anecdoteReducer'
+import anecdoteService from './services/anecdotes'
 
 class App extends React.Component {
+  componentDidMount = async () => {
+    const anecdotes = await anecdoteService.getAll()
+    this.props.anecdoteInit(anecdotes)
+  }
 
   render() {
     //  const anecdotes = this.props.store.getState().anecdote
@@ -32,6 +38,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-const connectedApp = connect(mapStateToProps)(App)
+const mapDispatchToProps = {
+  anecdoteInit: actionFor.anecdotesInit
+}
+
+const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
 
 export default connectedApp

@@ -10,8 +10,7 @@ export const actionForFilter = {
 const filterReducer = (state = '', action) => {
   switch (action.type) {
     case 'SET_FILTER':
-    state = action.filter
-      return state
+      return action.filter
     default:
       return state
   }
